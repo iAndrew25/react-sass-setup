@@ -8,10 +8,16 @@ const webpack = require('webpack'),
 module.exports = {
 	entry: './index.js',
 	output: {
-		path: __dirname + '/build',
+		path: path.resolve(__dirname, 'build'),
 		filename: 'script.js'
 	},
 	watch: true,
+	resolve: {
+		alias: {
+			components: path.resolve(__dirname, 'app/commons/components'),
+			utils: path.resolve(__dirname, 'app/commons/utils')
+		}
+	},
 	module: {
 		rules: [{
 			test: /\.js$/,

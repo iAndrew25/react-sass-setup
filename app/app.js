@@ -1,3 +1,5 @@
+import test from 'utils/test';
+
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -8,6 +10,7 @@ export default class App extends React.Component {
 	}
 
 	render() {
+		test();
 		return(
 			<div className="box">
 				<p>{this.state.value}</p>
