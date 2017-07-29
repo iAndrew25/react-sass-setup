@@ -1,5 +1,7 @@
+@import '../styles/helpers/_variables';
+
 .box {
-	background-color: #eee;
+	background-color: $grey-background;
 	width: 300px;
 	margin: 50px auto;
 	border-radius: 5px;
@@ -9,5 +11,6 @@
 		font-weight: bold;
 		font-size: 20px;
 		padding: 20px;
+		color: $blue-link;
 	}
 }

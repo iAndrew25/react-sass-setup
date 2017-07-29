@@ -2,7 +2,8 @@ const webpack = require('webpack'),
 	path = require('path'),
 	ExtractTextPlugin = require('extract-text-webpack-plugin'),
 	HtmlWebpackPlugin = require('html-webpack-plugin'),
-	ReactRootPlugin = require('html-webpack-react-root-plugin');
+	ReactRootPlugin = require('html-webpack-react-root-plugin'),
+	OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
 	entry: './index.js',
@@ -25,7 +26,7 @@ module.exports = {
 			test: /\.scss$/,
 			use: ExtractTextPlugin.extract({
 				fallback: 'style-loader',
-				use: ['css-loader', 'sass-loader'],
+				use: ['css-loader', 'sass-loader']
 			})
 		}],
 	},
@@ -35,6 +36,25 @@ module.exports = {
 		}),
 		new ExtractTextPlugin('style.css'),
 		new HtmlWebpackPlugin(),
-		new ReactRootPlugin
+		new ReactRootPlugin,
+		new webpack.LoaderOptionsPlugin({
+			minimize: true,
+			debug: false
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			beautify: false,
+			mangle: {
+				screw_ie8: true,
+				keep_fnames: true
+			},
+			compress: {
+				screw_ie8: true
+			},
+			comments: false
+		}),
+		new OptimizeCssAssetsPlugin({
+			assetNameRegExp: /\.style\.css$/g,
+			canPrint: true
+		})
 	],
 }
