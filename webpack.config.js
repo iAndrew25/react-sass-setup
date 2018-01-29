@@ -1,8 +1,7 @@
 const webpack = require('webpack'),
 	path = require('path'),
-	ExtractTextPlugin = require('extract-text-webpack-plugin'),
 	HtmlWebpackPlugin = require('html-webpack-plugin'),
-	ReactRootPlugin = require('html-webpack-react-root-plugin'),
+	ExtractTextPlugin = require('extract-text-webpack-plugin'),
 	OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
@@ -37,30 +36,12 @@ module.exports = {
 		}],
 	},
 	plugins: [
-		new webpack.ProvidePlugin({
-			'React': 'react',
-		}),
+		new webpack.ProvidePlugin({'React': 'react'}),
 		new ExtractTextPlugin('style.css'),
-		new HtmlWebpackPlugin(),
-		new ReactRootPlugin,
-		new webpack.LoaderOptionsPlugin({
-			minimize: true,
-			debug: false
+		new HtmlWebpackPlugin({
+			template: 'index-template.html',
+			inject: 'body',
 		}),
-		new webpack.optimize.UglifyJsPlugin({
-			beautify: false,
-			mangle: {
-				screw_ie8: true,
-				keep_fnames: true
-			},
-			compress: {
-				screw_ie8: true
-			},
-			comments: false
-		}),
-		new OptimizeCssAssetsPlugin({
-			assetNameRegExp: /\.style\.css$/g,
-			canPrint: true
-		})
+		new OptimizeCssAssetsPlugin({assetNameRegExp: /\.style\.css$/g, canPrint: true})
 	],
 }
