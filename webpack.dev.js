@@ -10,13 +10,6 @@ module.exports = {
 		path: path.resolve(__dirname, 'build'),
 		filename: 'script.js'
 	},
-	watch: true,
-	resolve: {
-		alias: {
-			components: path.resolve(__dirname, 'app/commons/components'),
-			utils: path.resolve(__dirname, 'app/commons/utils')
-		}
-	},
 	module: {
 		rules: [{
 			test: /\.js$/,
@@ -41,7 +34,6 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: 'index-template.html',
 			inject: 'body',
-		}),
-		new OptimizeCssAssetsPlugin({assetNameRegExp: /\.style\.css$/g, canPrint: true})
-	],
+		})
+	]
 }
