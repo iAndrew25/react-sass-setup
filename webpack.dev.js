@@ -1,8 +1,7 @@
 const webpack = require('webpack'),
 	path = require('path'),
 	HtmlWebpackPlugin = require('html-webpack-plugin'),
-	ExtractTextPlugin = require('extract-text-webpack-plugin'),
-	OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+	ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: './index.js',
