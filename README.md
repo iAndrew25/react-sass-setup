@@ -1,6 +1,6 @@
 # Basic React JS & SASS setup
 Starting the application:
-``npm run start``
+``npm start``
 
 Runing production build:
 ``npm run build``
