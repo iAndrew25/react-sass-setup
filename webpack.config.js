@@ -4,9 +4,9 @@ const webpack = require('webpack'),
 	ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-	entry: './index.js',
+	entry: './src/index.js',
 	output: {
-		path: path.resolve(__dirname, 'build'),
+		path: path.resolve(__dirname, 'dist'),
 		filename: 'script.js'
 	},
 	module: {
@@ -28,10 +28,12 @@ module.exports = {
 		}],
 	},
 	plugins: [
-		new webpack.ProvidePlugin({'React': 'react'}),
+		new webpack.ProvidePlugin({
+			'React': 'react'
+		}),
 		new ExtractTextPlugin('style.css'),
 		new HtmlWebpackPlugin({
-			template: 'index-template.html',
+			template: './src/index.html',
 			inject: 'body',
 		})
 	]
